@@ -41,51 +41,6 @@ public class SlideScene extends AbstractScene {
 	private YPYISceneMenu sceneMenu;
 	private SlideYPYIScene slideYPYIScene;
 
-//	public SlideScene(MTApplication mtApplication, String name, PImage pImage, boolean hasPrev, PImage arrow) {
-//		super(mtApplication, name);
-//		this.mtApp = mtApplication;
-//		
-//		//Set the background color
-//		this.setClearColor(new MTColor(0, 0, 0, 0));
-//		
-//		this.registerGlobalInputProcessor(new CursorTracer(mtApp, this));
-//		
-//		MTRectangle rect = new MTRectangle(pImage, mtApplication);
-//		this.getCanvas().addChild(rect);
-//		rect.setPositionGlobal(new Vector3D(mtApplication.width/2f, mtApplication.height/2f));
-//		
-//		if(hasPrev){
-//			
-//			MTImageButton previousSceneButton = new MTImageButton(arrow, mtApplication);
-//			previousSceneButton.setNoStroke(true);
-//			if (MT4jSettings.getInstance().isOpenGlMode())
-//				previousSceneButton.setUseDirectGL(true);
-//			previousSceneButton.addActionListener(new ActionListener() {
-//				public void actionPerformed(ActionEvent ae) {
-//					switch (ae.getID()) {
-//					case TapEvent.BUTTON_CLICKED:
-//						mtApp.popScene();
-//						break;
-//					default:
-//						break;
-//					}
-//				}
-//			});
-//			getCanvas().addChild(previousSceneButton);
-//			previousSceneButton.scale(-1, 1, 1, previousSceneButton.getCenterPointLocal(), TransformSpace.LOCAL);
-//			previousSceneButton.setPositionGlobal(new Vector3D(previousSceneButton.getWidthXY(TransformSpace.GLOBAL) + 5, mtApp.height - previousSceneButton.getHeightXY(TransformSpace.GLOBAL) - 5, 0));
-//		}	
-//		
-//		
-//		//Set a scene transition - Flip transition only available using opengl supporting the FBO extenstion
-//		if (MT4jSettings.getInstance().isOpenGlMode() && GLFBO.isSupported(mtApp))
-//			this.setTransition(new FlipTransition(mtApp, 700));
-//		else{
-//			this.setTransition(new FadeTransition(mtApp));
-//		}
-//	}
-//	
-//	
 	
 	public SlideScene(MTApplication mtApplication, SlideYPYIScene scene,String name, DiapositivaVO diapositivaVO, boolean hasPrev, 
 												   PImage arrow, int xOffset, int yOffset, int nroSlide) {
@@ -201,7 +156,7 @@ public class SlideScene extends AbstractScene {
 				}
 			});
 			getCanvas().addChild(previousSceneButton);
-			previousSceneButton.scale(-1.5f, 1.5f, 1, previousSceneButton.getCenterPointLocal(), TransformSpace.LOCAL);
+			previousSceneButton.scale(-2f, 2f, 1, previousSceneButton.getCenterPointLocal(), TransformSpace.LOCAL);
 			previousSceneButton.setPositionGlobal(new Vector3D(previousSceneButton.getWidthXY(TransformSpace.GLOBAL) - 20, (mtApp.height/2) - previousSceneButton.getHeightXY(TransformSpace.GLOBAL) - 5, 0));
 		}	
 		
@@ -311,7 +266,7 @@ public class SlideScene extends AbstractScene {
 			}
 		});
 		getCanvas().addChild(nextSceneButton);
-		nextSceneButton.scale(1.5f, 1.5f, 1, nextSceneButton.getCenterPointLocal(), TransformSpace.LOCAL);
+		nextSceneButton.scale(2f, 2f, 1, nextSceneButton.getCenterPointLocal(), TransformSpace.LOCAL);
 		nextSceneButton.setPositionGlobal(new Vector3D(mtApp.width - nextSceneButton.getWidthXY(TransformSpace.GLOBAL) + 20, (mtApp.height/2) - nextSceneButton.getHeightXY(TransformSpace.GLOBAL) - 5, 0));
 
 	}
