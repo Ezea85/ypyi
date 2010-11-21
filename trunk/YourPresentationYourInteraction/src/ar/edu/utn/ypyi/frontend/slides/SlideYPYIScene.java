@@ -34,6 +34,8 @@ import org.mt4j.sceneManagement.YPYIMaximizableScene;
 import org.mt4j.util.MTColor;
 import org.mt4j.util.math.Vector3D;
 
+import ar.edu.utn.ypyi.frontend.menu.StartYPYIShell;
+
 import processing.core.PImage;
 
 public class SlideYPYIScene extends AbstractScene implements YPYIMaximizableScene{
@@ -68,10 +70,7 @@ public class SlideYPYIScene extends AbstractScene implements YPYIMaximizableScen
 		this.registerGlobalInputProcessor(new CursorTracer(mtApplication, this));
 		
 		//Agrego el background
-		MTImage background = new MTImage(app.loadImage(System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"
-														+File.separator+"edu"+File.separator+"utn"+File.separator+"ypyi"
-														+File.separator+"frontend"+File.separator+"slides"+ File.separator+"data"
-														+File.separator+ "scenePresentacion.jpg"), app);
+		MTImage background = new MTImage(app.loadImage(StartYPYIShell.getPathToIconsYPYI()+ "scenePresentacion.jpg"), app);
 		
 		
 		background.setPickable(false);
@@ -98,9 +97,7 @@ public class SlideYPYIScene extends AbstractScene implements YPYIMaximizableScen
 		//Add the textfield to our canvas
 		this.getCanvas().addChild(textField);
 		
-		PImage abrirImg = app.loadImage(System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"+File.separator+"edu"
-				 											+File.separator+"utn"+File.separator+"ypyi"+File.separator+"frontend"
-				 											+File.separator+"flickrMT"+ File.separator+"data"+File.separator+ "iconoAbrir.png");
+		PImage abrirImg = app.loadImage(StartYPYIShell.getPathToIconsYPYI()+ "iconoAbrir.png");
 				
 		final MTImageButton abrirButton = new MTImageButton(abrirImg, app);
 		abrirButton.setHeightLocal(120);
@@ -148,7 +145,7 @@ public class SlideYPYIScene extends AbstractScene implements YPYIMaximizableScen
 			yOffset = (app.height - pgsize.height) / 2;
 
 		// Button to return to the previous scene
-		String path = getPath();
+		String path = StartYPYIShell.getPathToIconsYPYI();
 		PImage arrow = app.loadImage(path + "arrowRight.png");
 
 		SlideScene slideScene = null;
@@ -204,8 +201,41 @@ public class SlideYPYIScene extends AbstractScene implements YPYIMaximizableScen
 		
 		slideScenes = null;
 		
+		deleteAuxFiles();
+		
 //		app.changeScene(this);
 		
+	}
+	
+	private void deleteAuxFiles(){
+		File dir = new File(StartYPYIShell.getPathToAuxYPYI());
+		String[] fileNames = dir.list();
+		for(String fileName : fileNames){
+			 // A File object to represent the filename
+		    File f = new File(StartYPYIShell.getPathToAuxYPYI() + fileName);
+
+		    // Make sure the file or directory exists and isn't write protected
+		    if (!f.exists()){
+		      System.out.println(
+		          "Delete: no such file or directory: " + fileName);
+		      return;
+		    }
+
+		    if (!f.canWrite()){
+		    	System.out.println("Delete: write protected: "
+		          + fileName);
+		    	return;
+		    }
+
+		    // Attempt to delete it
+		    boolean success = f.delete();
+
+		    if (!success){
+		    	System.out.println("Delete: deletion failed");
+		    	return;
+		    }
+
+		}
 	}
 	
 	public void minimizeYPYI(int nroSlide){
@@ -248,13 +278,13 @@ public class SlideYPYIScene extends AbstractScene implements YPYIMaximizableScen
 		
 	}
 	
-	private String getPath(){
-		return (System.getProperty("user.dir") + File.separator + "src"
-		+ File.separator + "ar" + File.separator + "edu"
-		+ File.separator + "utn" + File.separator + "ypyi"
-		+ File.separator + "frontend" + File.separator + "slides"
-		+ File.separator + "data" + File.separator);
-	}
+//	private String getPath(){
+//		return (System.getProperty("user.dir") + File.separator + "src"
+//		+ File.separator + "ar" + File.separator + "edu"
+//		+ File.separator + "utn" + File.separator + "ypyi"
+//		+ File.separator + "frontend" + File.separator + "slides"
+//		+ File.separator + "data" + File.separator);
+//	}
 	
 	private String printscreen(){
 		try {
@@ -288,12 +318,12 @@ public class SlideYPYIScene extends AbstractScene implements YPYIMaximizableScen
 			
 			g2d.drawRenderedImage(image,at);
 
-			ImageIO.write(image2,"png",new File(getPath() + "printscreen.png"));
+			ImageIO.write(image2,"png",new File(StartYPYIShell.getPathToIconsYPYI() + "printscreen.png"));
 
 			
 			
 			
-			return getPath() + "printscreen.png";
+			return StartYPYIShell.getPathToIconsYPYI() + "printscreen.png";
 		} catch (Exception e) {
 			System.out.println("Error al hacer el printscreen");
 			e.printStackTrace();

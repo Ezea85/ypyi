@@ -36,6 +36,7 @@ import org.mt4j.util.math.Vector3D;
 import org.mt4j.util.math.Vertex;
 
 import processing.core.PImage;
+import ar.edu.utn.ypyi.frontend.menu.StartYPYIShell;
 
 public class SceneUtils {
 
@@ -186,7 +187,7 @@ public class SceneUtils {
 		final MTEllipse pencilBrush;
 		final DrawSurfaceScene drawingScene;
 
-		String path = getPathToIconsYPYI();
+		String path = StartYPYIShell.getPathToIconsYPYI();
 		
 //		final MTRoundRectangle frame = new MTRoundRectangle(-50,-50, 0, mtApplication.width+100,mtApplication.height+100, 25,25, mtApplication);
 		final MTRectangle frame = new MTRectangle(-50,-50, 0, mtApplication.width+100,mtApplication.height+100, mtApplication);
@@ -457,7 +458,7 @@ public class SceneUtils {
 		final MTEllipse pencilBrush;
 		final DrawSurfaceScene drawingScene;
 		
-		String path = getPathToIconsYPYI();
+		String path = StartYPYIShell.getPathToIconsYPYI();
 		
 		PImage pImage = mtApplication.loadImage(imagenVO.getDireccionFisicaImagen());
 		float x = new Float(imagenVO.getImagen().getAnchor().getCenterX()).floatValue();
@@ -753,10 +754,10 @@ public class SceneUtils {
 	
 	
 	
-	private static String getPathToIconsYPYI(){
-		return System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"+File.separator+"edu"
-											 +File.separator+"utn"+File.separator+"ypyi"+File.separator+"frontend"
-											 +File.separator+"slides"+ File.separator+"data"+File.separator;
-	}
+//	private static String getPathToIconsYPYI(){
+//		return System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"+File.separator+"edu"
+//											 +File.separator+"utn"+File.separator+"ypyi"+File.separator+"frontend"
+//											 +File.separator+"slides"+ File.separator+"data"+File.separator;
+//	}
 	
 }

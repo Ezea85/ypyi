@@ -10,9 +10,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-
 import org.mt4j.MTApplication;
 import org.mt4j.components.MTComponent;
 import org.mt4j.components.TransformSpace;
@@ -21,7 +18,6 @@ import org.mt4j.components.visibleComponents.shapes.AbstractShape;
 import org.mt4j.components.visibleComponents.widgets.MTImage;
 import org.mt4j.components.visibleComponents.widgets.MTTextArea;
 import org.mt4j.components.visibleComponents.widgets.buttons.MTImageButton;
-import org.mt4j.components.visibleComponents.widgets.buttons.MTSvgButton;
 import org.mt4j.components.visibleComponents.widgets.keyboard.MTKeyboard;
 import org.mt4j.components.visibleComponents.widgets.progressBar.MTProgressBar;
 import org.mt4j.input.IMTEventListener;
@@ -45,8 +41,8 @@ import org.mt4j.util.math.Tools3D;
 import org.mt4j.util.math.Vector3D;
 
 import processing.core.PImage;
-
 import advanced.flickrMT.FlickrMTFotoLoader;
+import ar.edu.utn.ypyi.frontend.menu.StartYPYIShell;
 import ar.edu.utn.ypyi.frontend.slides.SceneUtils;
 
 import com.aetrion.flickr.photos.SearchParameters;
@@ -87,7 +83,7 @@ public class FlickrScene extends AbstractScene {
 		
 		MTComponent topLayer = new MTComponent(app, "top layer group", new MTCamera(app));
 		
-		MTImage background = new MTImage(app.loadImage(this.getPathToIconsYPYI() + "background_flow.jpg"), app);
+		MTImage background = new MTImage(app.loadImage(StartYPYIShell.getPathToIconsYPYI() + "background_flow.jpg"), app);
 		background.setPickable(false);
 		background.setWidthXYGlobal(app.width+120);
 		background.setHeightXYGlobal(app.height+120);
@@ -97,7 +93,7 @@ public class FlickrScene extends AbstractScene {
 		pictureLayer.addChild(background);
 		
 		
-		PImage keyboardImg = app.loadImage(this.getPathToIconsYPYI() + "keyb128.png");
+		PImage keyboardImg = app.loadImage(StartYPYIShell.getPathToIconsYPYI() + "keyb128.png");
 		
 		final MTImageButton keyboardButton = new MTImageButton(keyboardImg, app);
 		keyboardButton.setFillColor(new MTColor(255,255,255,200));
@@ -134,9 +130,7 @@ public class FlickrScene extends AbstractScene {
 //			        MTSvgButton flickrButton = new MTSvgButton(System.getProperty("user.dir")+File.separator+"examples"+File.separator+"advanced"+File.separator+File.separator+"flickrMT"+File.separator +"data"+File.separator
 //							+ "Flickr_Logo.svg", app);
 					
-					PImage interactivaImg = app.loadImage(System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"+File.separator+"edu"
-							 								+File.separator+"utn"+File.separator+"ypyi"+File.separator+"frontend"
-							 								+File.separator+"menu"+ File.separator+"images"+File.separator+"logo_ypyi.png");
+					PImage interactivaImg = app.loadImage(StartYPYIShell.getPathToIconsYPYI()+"logo_ypyi.png");
 							
 					final MTImageButton flickrButton = new MTImageButton(interactivaImg, app);
 					
@@ -235,7 +229,7 @@ public class FlickrScene extends AbstractScene {
 		
 		
 		
-		PImage abrirImg = app.loadImage(this.getPathToIconsYPYI() + "iconoAbrir.png");
+		PImage abrirImg = app.loadImage(StartYPYIShell.getPathToIconsYPYI() + "iconoAbrir.png");
 				
 		final MTImageButton abrirButton = new MTImageButton(abrirImg, app);
 		abrirButton.setHeightLocal(120);
@@ -301,11 +295,11 @@ public class FlickrScene extends AbstractScene {
 	 * 
 	 * @return the path to icons
 	 */
-	private String getPathToIconsYPYI(){
-		return System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"+File.separator+"edu"
-											 +File.separator+"utn"+File.separator+"ypyi"+File.separator+"frontend"
-											 +File.separator+"flickrMT"+ File.separator+"data"+File.separator;
-	}
+//	private String getPathToIconsYPYI(){
+//		return System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"+File.separator+"edu"
+//											 +File.separator+"utn"+File.separator+"ypyi"+File.separator+"frontend"
+//											 +File.separator+"flickrMT"+ File.separator+"data"+File.separator;
+//	}
 	
 	@Override
 	public void init() {

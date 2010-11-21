@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.File;
 
 import org.mt4j.MTApplication;
 import org.mt4j.components.TransformSpace;
@@ -22,16 +21,14 @@ import org.mt4j.input.inputProcessors.componentProcessors.dragProcessor.DragProc
 import org.mt4j.input.inputProcessors.componentProcessors.tapProcessor.TapEvent;
 import org.mt4j.input.inputProcessors.globalProcessors.CursorTracer;
 import org.mt4j.sceneManagement.AbstractScene;
-import org.mt4j.sceneManagement.IPreDrawAction;
 import org.mt4j.util.MT4jSettings;
 import org.mt4j.util.MTColor;
 import org.mt4j.util.math.Vector3D;
 import org.mt4j.util.math.Vertex;
 import org.mt4j.util.opengl.GLFBO;
 
-import ar.edu.utn.ypyi.frontend.drawing.DrawSurfaceScene;
-
 import processing.core.PImage;
+import ar.edu.utn.ypyi.frontend.menu.StartYPYIShell;
 
 public class MainDrawingScene extends AbstractScene {
 	private MTApplication pa;
@@ -59,7 +56,7 @@ public class MainDrawingScene extends AbstractScene {
         drawingScene.setClear(false);
             
         //Create texture brush
-        PImage brushImage = getMTApplication().loadImage(this.getPathToIconsYPYI() + "brush1.png");
+        PImage brushImage = getMTApplication().loadImage(StartYPYIShell.getPathToIconsYPYI() + "brush1.png");
 		textureBrush = new MTRectangle(brushImage, getMTApplication());
 		textureBrush.setPickable(false);
 		textureBrush.setNoFill(false);
@@ -87,10 +84,11 @@ public class MainDrawingScene extends AbstractScene {
         frame.addChild(sceneTexture);
         
         //Eraser button
-        PImage eraser = pa.loadImage(this.getPathToIconsYPYI() + "Kde_crystalsvg_eraser.png");
+        PImage eraser = pa.loadImage(StartYPYIShell.getPathToIconsYPYI() + "Kde_crystalsvg_eraser.png");
+        float yButton = mtApplication.height - (eraser.height/3);
         MTImageButton b = new MTImageButton(eraser, pa);
         b.setNoStroke(true);
-        b.translate(new Vector3D(350,mtApplication.height,0));
+        b.translate(new Vector3D(350,yButton,0));
         b.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
@@ -108,21 +106,24 @@ public class MainDrawingScene extends AbstractScene {
 			}
         });
         frame.addChild(b);
+        b.scale(2f, 2f, 1, b.getCenterPointLocal(), TransformSpace.LOCAL);
         
         //Pen brush selector button
-        PImage penIcon = pa.loadImage(this.getPathToIconsYPYI() + "pen.png");
+        PImage penIcon = pa.loadImage(StartYPYIShell.getPathToIconsYPYI() + "pen.png");
         final MTImageButton penButton = new MTImageButton(penIcon, pa);
         frame.addChild(penButton);
-        penButton.translate(new Vector3D(450f, mtApplication.height,0));
+        penButton.translate(new Vector3D(450f, yButton,0));
         penButton.setNoStroke(true);
         penButton.setStrokeColor(new MTColor(0,0,0));
+        penButton.scale(2f, 2f, 1, penButton.getCenterPointLocal(), TransformSpace.LOCAL);
         
         //Texture brush selector button
-        PImage brushIcon = pa.loadImage(this.getPathToIconsYPYI() + "paintbrush.png");
+        PImage brushIcon = pa.loadImage(StartYPYIShell.getPathToIconsYPYI() + "paintbrush.png");
         final MTImageButton brushButton = new MTImageButton(brushIcon, pa);
         frame.addChild(brushButton);
-        brushButton.translate(new Vector3D(550f, mtApplication.height,0));
+        brushButton.translate(new Vector3D(550f, yButton,0));
         brushButton.setStrokeColor(new MTColor(0,0,0));
+        brushButton.scale(1.5f, 1.5f, 1, brushButton.getCenterPointLocal(), TransformSpace.LOCAL);
         brushButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
@@ -153,10 +154,10 @@ public class MainDrawingScene extends AbstractScene {
         
         /////////////////////////
         //ColorPicker and colorpicker button
-        PImage colPick = pa.loadImage(this.getPathToIconsYPYI() + "colorcircle.png");
+        PImage colPick = pa.loadImage(StartYPYIShell.getPathToIconsYPYI() + "colorcircle.png");
 //        final MTColorPicker colorWidget = new MTColorPicker(0, pa.height-colPick.height, colPick, pa);
         final MTColorPicker colorWidget = new MTColorPicker(0, 0, colPick, pa);
-        colorWidget.translate(new Vector3D(575f, mtApplication.height - colorWidget.getHeightXY(TransformSpace.GLOBAL),0));
+        colorWidget.translate(new Vector3D(575f, mtApplication.height - (eraser.height/1.5f) - colorWidget.getHeightXY(TransformSpace.GLOBAL),0));
         colorWidget.setStrokeColor(new MTColor(0,0,0));
         colorWidget.addGestureListener(DragProcessor.class, new IGestureEventListener() {
 			public boolean processGestureEvent(MTGestureEvent ge) {
@@ -173,11 +174,12 @@ public class MainDrawingScene extends AbstractScene {
         frame.addChild(colorWidget);
         colorWidget.setVisible(false);
         
-        PImage colPickIcon = pa.loadImage(this.getPathToIconsYPYI() + "ColorPickerIcon.png");
+        PImage colPickIcon = pa.loadImage(StartYPYIShell.getPathToIconsYPYI() + "ColorPickerIcon.png");
         MTImageButton colPickButton = new MTImageButton(colPickIcon, pa);
         frame.addChild(colPickButton);
-        colPickButton.translate(new Vector3D(650f, mtApplication.height,0));
+        colPickButton.translate(new Vector3D(650f, yButton,0));
         colPickButton.setNoStroke(true);
+        colPickButton.scale(2f, 2f, 1, colPickButton.getCenterPointLocal(), TransformSpace.LOCAL);
         colPickButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
@@ -196,11 +198,11 @@ public class MainDrawingScene extends AbstractScene {
         });
         
         //Add a slider to set the brush width
-        MTSlider slider = new MTSlider(0, 0, 200, 38, 0.05f, 2.0f, pa);
+        MTSlider slider = new MTSlider(0, 0, 400, 76, 0.05f, 2.0f, pa);
         slider.setValue(0/*1.0f*/);
         frame.addChild(slider);
 //        slider.rotateZ(new Vector3D(), 90, TransformSpace.LOCAL);
-        slider.translate(new Vector3D(750, mtApplication.height));
+        slider.translate(new Vector3D(750, mtApplication.height - (eraser.height/1.5f)));
         slider.setStrokeColor(new MTColor(0,0,0));
         slider.setFillColor(new MTColor(220,220,220));
         slider.getKnob().setFillColor(new MTColor(70,70,70));
@@ -233,11 +235,11 @@ public class MainDrawingScene extends AbstractScene {
 	 * 
 	 * @return the path to icons
 	 */
-	private String getPathToIconsYPYI(){
-		return System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"+File.separator+"edu"
-											 +File.separator+"utn"+File.separator+"ypyi"+File.separator+"frontend"
-											 +File.separator+"drawing"+ File.separator+"images"+File.separator;
-	}
+//	private String getPathToIconsYPYI(){
+//		return System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"+File.separator+"edu"
+//											 +File.separator+"utn"+File.separator+"ypyi"+File.separator+"frontend"
+//											 +File.separator+"drawing"+ File.separator+"images"+File.separator;
+//	}
 	
 	
 	
