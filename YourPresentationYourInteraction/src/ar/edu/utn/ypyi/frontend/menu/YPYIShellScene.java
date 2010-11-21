@@ -17,6 +17,8 @@
  ***********************************************************************/
 package ar.edu.utn.ypyi.frontend.menu;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
@@ -25,6 +27,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
 import org.mt4j.MTApplication;
+import org.mt4j.components.MTComponent;
 import org.mt4j.components.TransformSpace;
 import org.mt4j.components.visibleComponents.font.FontManager;
 import org.mt4j.components.visibleComponents.font.IFont;
@@ -36,6 +39,7 @@ import org.mt4j.components.visibleComponents.widgets.MTListCell;
 import org.mt4j.components.visibleComponents.widgets.MTSceneMenu;
 import org.mt4j.components.visibleComponents.widgets.MTSceneWindow;
 import org.mt4j.components.visibleComponents.widgets.MTTextArea;
+import org.mt4j.components.visibleComponents.widgets.buttons.MTImageButton;
 import org.mt4j.input.gestureAction.InertiaDragAction;
 import org.mt4j.input.inputProcessors.IGestureEventListener;
 import org.mt4j.input.inputProcessors.MTGestureEvent;
@@ -152,15 +156,48 @@ public class YPYIShellScene extends AbstractScene {
 		
 		PImage logoInteractivaImg = app.loadImage(StartYPYIShell.getPathToIconsYPYI()+ "logo_ypyi.png");
 		
-		MTRectangle logoImg = new MTRectangle(logoInteractivaImg, app);
+//		MTRectangle logoImg = new MTRectangle(logoInteractivaImg, app);
+//		
+//		logoImg.setPickable(false);
+//		logoImg.setWidthXYGlobal(100);
+//		logoImg.setHeightXYGlobal(100);
+//		logoImg.setPositionGlobal(new Vector3D(300,80,0));
+//		logoImg.setNoStroke(true);
+//
+//		getCanvas().addChild(logoImg);
 		
-		logoImg.setPickable(false);
-		logoImg.setWidthXYGlobal(100);
-		logoImg.setHeightXYGlobal(100);
-		logoImg.setPositionGlobal(new Vector3D(300,80,0));
-		logoImg.setNoStroke(true);
+		final MTImageButton logoButton = new MTImageButton(logoInteractivaImg, app);
+//		logoButton.setPickable(false);
+		logoButton.setWidthXYGlobal(100);
+		logoButton.setHeightXYGlobal(100);
+		logoButton.setPositionGlobal(new Vector3D(300,80,0));
+		logoButton.setNoStroke(true);
 		
-		getCanvas().addChild(logoImg);
+		logoButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (arg0.getSource() instanceof MTComponent){
+						//MTBaseComponent clickedComp = (MTBaseComponent)arg0.getSource();
+						switch (arg0.getID()) {
+						case TapEvent.BUTTON_CLICKED:
+							
+							Iscene scene = new AirHockeyScene(app, "AirHockey");
+							
+							MTSceneWindow sceneWindow = new MTSceneWindow(scene, 100,50, app, false);
+							sceneWindow.setFillColor(new MTColor(50,50,50,200));
+							sceneWindow.scaleGlobal(0.5f, 0.5f, 0.5f, sceneWindow.getCenterPointGlobal());
+//							sceneWindow.addGestureListener(DragProcessor.class, new InertiaDragAction());
+							getCanvas().addChild(sceneWindow);
+							sceneWindow.maximize();
+							
+							break;
+						default:
+							break;
+						}
+					}
+				}
+			});
+							
+		getCanvas().addChild(logoButton);
 		
 		MTColor white = new MTColor(255,255,255);
 		

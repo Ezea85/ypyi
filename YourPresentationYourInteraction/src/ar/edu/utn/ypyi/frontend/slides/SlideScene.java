@@ -69,7 +69,7 @@ public class SlideScene extends AbstractScene {
 		abrirButton.setFillColor(new MTColor(255,255,255,200));
 		abrirButton.setName("IconoAbrir");
 		abrirButton.setNoStroke(true);
-		abrirButton.translateGlobal(new Vector3D(100,mtApp.height- abrirButton.getWidthXY(TransformSpace.GLOBAL)+2,0));
+		abrirButton.translateGlobal(new Vector3D(130,mtApp.height-abrirButton.getWidthXY(TransformSpace.GLOBAL)+2,0));
 		
 		getCanvas().addChild(abrirButton);
 		
