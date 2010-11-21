@@ -139,7 +139,7 @@ public class YPYIShellScene extends AbstractScene {
 		
 		
 		//BACKGROUND IMAGE
-		MTImage background = new MTImage(app.loadImage(this.getPathToIconsYPYI()+ "candidato02.jpg"/*"background_flow.jpg"*/), app);
+		MTImage background = new MTImage(app.loadImage(StartYPYIShell.getPathToIconsYPYI()+ "candidato02.jpg"/*"background_flow.jpg"*/), app);
 		
 		
 		background.setPickable(false); 
@@ -150,7 +150,7 @@ public class YPYIShellScene extends AbstractScene {
 		
 		getCanvas().addChild(background);
 		
-		PImage logoInteractivaImg = app.loadImage(this.getPathToIconsYPYI()+ "logo_ypyi.png");
+		PImage logoInteractivaImg = app.loadImage(StartYPYIShell.getPathToIconsYPYI()+ "logo_ypyi.png");
 		
 		MTRectangle logoImg = new MTRectangle(logoInteractivaImg, app);
 		
@@ -208,7 +208,7 @@ public class YPYIShellScene extends AbstractScene {
 			public String getTitle() {
 				return "Calibrar dispositivo";
 			}
-		}, app.loadImage(this.getPathToIconsYPYI() + "sceneCalibrar.png"), false);
+		}, app.loadImage(StartYPYIShell.getPathToIconsYPYI() + "sceneCalibrar.png"), false);
 		
 		this.addScene(new ICreateScene() {
 			public Iscene getNewScene() {
@@ -217,7 +217,7 @@ public class YPYIShellScene extends AbstractScene {
 			public String getTitle() {
 				return "Fotos Interactivas";
 			}
-		}, app.loadImage(this.getPathToIconsYPYI() + "sceneFotos.png"), false);
+		}, app.loadImage(StartYPYIShell.getPathToIconsYPYI() + "sceneFotos.png"), false);
 		
 
 		this.addScene(new ICreateScene() {
@@ -227,7 +227,7 @@ public class YPYIShellScene extends AbstractScene {
 			public String getTitle() {
 				return "Presentaciones";
 			}
-		}, app.loadImage(this.getPathToIconsYPYI() + "scenePresentacion.png"), true);
+		}, app.loadImage(StartYPYIShell.getPathToIconsYPYI() + "scenePresentacion.png"), true);
 		
 		if (this.hasFBO){
 			this.addScene(new ICreateScene() {
@@ -237,7 +237,7 @@ public class YPYIShellScene extends AbstractScene {
 				public String getTitle() {
 					return "Pizarra";
 				}
-			}, app.loadImage(this.getPathToIconsYPYI() + "scenePizarra.png"), false);
+			}, app.loadImage(StartYPYIShell.getPathToIconsYPYI() + "scenePizarra.png"), false);
 		}
 		
 		getCanvas().addChild(list);
@@ -258,11 +258,11 @@ public class YPYIShellScene extends AbstractScene {
 	 * 
 	 * @return the path to icons
 	 */
-	private String getPathToIconsYPYI(){
-		return System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"+File.separator+"edu"
-											 +File.separator+"utn"+File.separator+"ypyi"+File.separator+"frontend"
-											 +File.separator+"menu"+ File.separator+"images"+File.separator;
-	}
+//	private String getPathToIconsYPYI(){
+//		return System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"+File.separator+"edu"
+//											 +File.separator+"utn"+File.separator+"ypyi"+File.separator+"frontend"
+//											 +File.separator+"menu"+ File.separator+"images"+File.separator;
+//	}
 	
 	/*
 	 * *

@@ -17,6 +17,8 @@ import org.apache.poi.hslf.model.Slide;
 import org.apache.poi.hslf.usermodel.SlideShow;
 import org.mt4j.MTApplication;
 
+import ar.edu.utn.ypyi.frontend.menu.StartYPYIShell;
+
 import processing.core.PImage;
 
 public class StartSlidesExample extends MTApplication {
@@ -55,8 +57,7 @@ public class StartSlidesExample extends MTApplication {
 		Dimension pgsize = ppt.getPageSize();
 
 		//Button to return to the previous scene
-		PImage arrow = loadImage(System.getProperty("user.dir") + File.separator + "data" + File.separator +
-		"arrowRight.png");
+		PImage arrow = loadImage(StartYPYIShell.getPathToIconsYPYI() + "arrowRight.png");
 		
 		SlideScene slideScene = null;
 		String slideName = null;

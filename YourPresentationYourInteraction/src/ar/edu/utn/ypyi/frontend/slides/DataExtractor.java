@@ -10,6 +10,8 @@ import org.apache.poi.hslf.model.Slide;
 import org.apache.poi.hslf.model.TextShape;
 import org.apache.poi.hslf.usermodel.PictureData;
 
+import ar.edu.utn.ypyi.frontend.menu.StartYPYIShell;
+
 /**
  * Demonstrates how you can extract misc embedded data from a ppt file
  *
@@ -74,12 +76,12 @@ public final class DataExtractor {
                        default:
                            continue;
                     }
-                    FileOutputStream out = new FileOutputStream("pict-" +i + j + name + ext);
+                    FileOutputStream out = new FileOutputStream(StartYPYIShell.getPathToAuxYPYI() + "pict-" +i + j + name + ext);
                     out.write(data.getData());
                     out.close();
                     
                     //genero imagenVO
-                    imagenVO.setDireccionFisicaImagen("pict-" +i + j + name + ext);
+                    imagenVO.setDireccionFisicaImagen(StartYPYIShell.getPathToAuxYPYI() + "pict-" +i + j + name + ext);
                     imagenVO.setImagen(p);
                     //guardo la direccion en DiapositivaVO
                     diapositivaVO.getImagenes().add(imagenVO);
@@ -123,12 +125,12 @@ public final class DataExtractor {
 	                ext = ".dib";
 	                break;
 	         }
-	         FileOutputStream out = new FileOutputStream("background-" + i + ext);
+	         FileOutputStream out = new FileOutputStream(StartYPYIShell.getPathToAuxYPYI() + "background-" + i + ext);
 	         out.write(data.getData());
 	         out.close();
 	         
 	         //genero imagenVO
-	         imagenVO.setDireccionFisicaImagen("background-" + i + ext);
+	         imagenVO.setDireccionFisicaImagen(StartYPYIShell.getPathToAuxYPYI() + "background-" + i + ext);
 	         
 	         //guardo la direccion en DiapositivaVO
 	         diapositivaVO.setBackground(imagenVO);

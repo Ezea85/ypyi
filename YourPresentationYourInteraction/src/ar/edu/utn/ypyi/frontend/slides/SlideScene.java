@@ -32,6 +32,8 @@ import org.mt4j.util.math.Tools3D;
 import org.mt4j.util.math.Vector3D;
 import org.mt4j.util.opengl.GLFBO;
 
+import ar.edu.utn.ypyi.frontend.menu.StartYPYIShell;
+
 import processing.core.PImage;
 
 public class SlideScene extends AbstractScene {
@@ -55,9 +57,7 @@ public class SlideScene extends AbstractScene {
 		SceneUtils.addBackgroundToScene(mtApp, this, diapositivaVO.getBackground(), xOffset, yOffset);
 
 		//Agrego lo necesario para agregar fotos a la escena
-		PImage abrirImg = mtApp.loadImage(System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"+File.separator+"edu"
-												+File.separator+"utn"+File.separator+"ypyi"+File.separator+"frontend"
-												+File.separator+"flickrMT"+ File.separator+"data"+File.separator+ "iconoAbrir.png");
+		PImage abrirImg = mtApp.loadImage(StartYPYIShell.getPathToIconsYPYI()+ "iconoAbrir.png");
 		
 		final LassoProcessor lassoProcessor	= new LassoProcessor(mtApp, this.getCanvas(), this.getSceneCam());
 		this.getCanvas().registerInputProcessor(lassoProcessor);
@@ -192,9 +192,7 @@ public class SlideScene extends AbstractScene {
 	
 	private void addHomeButton(int nroSlide) {
 		
-		PImage homeButtonImg = mtApp.loadImage(System.getProperty("user.dir")+File.separator+"src"+File.separator+"ar"+File.separator+"edu"
-				 										+File.separator+"utn"+File.separator+"ypyi"+File.separator+"frontend"
-				 										+File.separator+"slides"+ File.separator+"data"+File.separator + "homeButton.png");
+		PImage homeButtonImg = mtApp.loadImage(StartYPYIShell.getPathToIconsYPYI() + "homeButton.png");
 		
 		
 		final int numeroDeSlide = nroSlide;
