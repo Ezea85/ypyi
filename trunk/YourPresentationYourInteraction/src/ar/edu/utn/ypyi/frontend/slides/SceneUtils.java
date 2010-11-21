@@ -240,7 +240,7 @@ public class SceneUtils {
         final MTImageButton eraserButton = new MTImageButton(eraser, mtApplication);
         eraserButton.setNoStroke(true);
         float yButton = mtApplication.height - (eraser.height/3);
-        eraserButton.translate(new Vector3D(450,yButton,0));
+        eraserButton.translate(new Vector3D(480,yButton,0));
         eraserButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
@@ -265,7 +265,7 @@ public class SceneUtils {
         PImage penIcon = mtApplication.loadImage(path + "pen.png");
         final MTImageButton penButton = new MTImageButton(penIcon, mtApplication);
         frame.addChild(penButton);
-        penButton.translate(new Vector3D(550f, yButton,0));
+        penButton.translate(new Vector3D(580f, yButton,0));
         penButton.setNoStroke(true);
         penButton.setStrokeColor(new MTColor(0,0,0));
         penButton.scale(2f, 2f, 1, penButton.getCenterPointLocal(), TransformSpace.LOCAL);
@@ -274,7 +274,7 @@ public class SceneUtils {
         PImage brushIcon = mtApplication.loadImage(path + "paintbrush.png");
         final MTImageButton brushButton = new MTImageButton(brushIcon, mtApplication);
         frame.addChild(brushButton);
-        brushButton.translate(new Vector3D(620f, yButton,0));
+        brushButton.translate(new Vector3D(660f, yButton,0));
         brushButton.setStrokeColor(new MTColor(0,0,0));
         brushButton.setNoStroke(true);
         brushButton.scale(1.5f, 1.5f, 1, brushButton.getCenterPointLocal(), TransformSpace.LOCAL);
@@ -311,7 +311,7 @@ public class SceneUtils {
         PImage colPick = mtApplication.loadImage(path + "colorcircle.png");
 //        final MTColorPicker colorWidget = new MTColorPicker(0, pa.height-colPick.height, colPick, pa);
         final MTColorPicker colorWidget = new MTColorPicker(0, 0, colPick, mtApplication);
-        colorWidget.translate(new Vector3D(675f, mtApplication.height - (eraser.height/1.5f) - colorWidget.getHeightXY(TransformSpace.GLOBAL),0));
+        colorWidget.translate(new Vector3D(705f, mtApplication.height - (eraser.height/1.5f) - colorWidget.getHeightXY(TransformSpace.GLOBAL),0));
         colorWidget.setStrokeColor(new MTColor(0,0,0));
         colorWidget.addGestureListener(DragProcessor.class, new IGestureEventListener() {
 			public boolean processGestureEvent(MTGestureEvent ge) {
@@ -331,7 +331,7 @@ public class SceneUtils {
         PImage colPickIcon = mtApplication.loadImage(path + "ColorPickerIcon.png");
         final MTImageButton colPickButton = new MTImageButton(colPickIcon, mtApplication);
         frame.addChild(colPickButton);
-        colPickButton.translate(new Vector3D(750f, yButton,0));
+        colPickButton.translate(new Vector3D(780f, yButton,0));
         colPickButton.setNoStroke(true);
         colPickButton.scale(2f, 2f, 1, colPickButton.getCenterPointLocal(), TransformSpace.LOCAL);
         colPickButton.addActionListener(new ActionListener(){
@@ -358,7 +358,7 @@ public class SceneUtils {
         slider.setValue(0);
         frame.addChild(slider);
 //        slider.rotateZ(new Vector3D(), 90, TransformSpace.LOCAL);
-        slider.translate(new Vector3D(850, mtApplication.height - (eraser.height/1.5f)));
+        slider.translate(new Vector3D(880, mtApplication.height - (eraser.height/1.5f)));
         slider.setStrokeColor(new MTColor(0,0,0));
         slider.setFillColor(new MTColor(220,220,220));
         slider.getKnob().setFillColor(new MTColor(70,70,70));
@@ -386,7 +386,7 @@ public class SceneUtils {
         PImage editIcon = mtApplication.loadImage(path + "edit_icon.png");
         final MTImageButton editButton = new MTImageButton(editIcon, mtApplication);
         frame.addChild(editButton);
-        editButton.translate(new Vector3D(330f, yButton ,0));
+        editButton.translate(new Vector3D(360f, yButton ,0));
         editButton.setNoStroke(true);
         editButton.setStrokeColor(new MTColor(0,0,0));
         editButton.scale(2f, 2f, 1, editButton.getCenterPointLocal(), TransformSpace.LOCAL);
@@ -394,7 +394,7 @@ public class SceneUtils {
         PImage handIcon = mtApplication.loadImage(path + "hand2.png");
         final MTImageButton handButton = new MTImageButton(handIcon, mtApplication);
         frame.addChild(handButton);
-        handButton.translate(new Vector3D(220f, yButton,0));
+        handButton.translate(new Vector3D(250f, yButton,0));
         handButton.setNoStroke(true);
         handButton.setStrokeColor(new MTColor(0,0,0));
         handButton.scale(2f, 2f, 1, handButton.getCenterPointLocal(), TransformSpace.LOCAL);

@@ -235,8 +235,7 @@ public class FlickrScene extends AbstractScene {
 		abrirButton.setFillColor(new MTColor(255,255,255,200));
 		abrirButton.setName("IconoAbrir");
 		abrirButton.setNoStroke(true);
-//				keyboardButton.translateGlobal(new Vector3D(5,5,0));
-		abrirButton.translateGlobal(new Vector3D(130,app.height-keyboardButton.getWidthXY(TransformSpace.GLOBAL)+2,0));
+		abrirButton.translateGlobal(new Vector3D(130,app.height-abrirButton.getWidthXY(TransformSpace.GLOBAL)+2,0));
 		
 		topLayer.addChild(abrirButton);
 		

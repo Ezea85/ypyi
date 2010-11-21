@@ -122,6 +122,7 @@ public class MainDrawingScene extends AbstractScene {
         final MTImageButton brushButton = new MTImageButton(brushIcon, pa);
         frame.addChild(brushButton);
         brushButton.translate(new Vector3D(550f, yButton,0));
+        brushButton.setNoStroke(true);
         brushButton.setStrokeColor(new MTColor(0,0,0));
         brushButton.scale(1.5f, 1.5f, 1, brushButton.getCenterPointLocal(), TransformSpace.LOCAL);
         brushButton.addActionListener(new ActionListener(){
