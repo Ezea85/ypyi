@@ -212,22 +212,21 @@ public class YPYIShellScene extends AbstractScene {
 		
 		this.addScene(new ICreateScene() {
 			public Iscene getNewScene() {
-				return new FlickrScene(app, "Flickr");
-			}
-			public String getTitle() {
-				return "Fotos Interactivas";
-			}
-		}, app.loadImage(StartYPYIShell.getPathToIconsYPYI() + "sceneFotos.png"), false);
-		
-
-		this.addScene(new ICreateScene() {
-			public Iscene getNewScene() {
 				return new SlideYPYIScene(app, "Presentacion");
 			}
 			public String getTitle() {
 				return "Presentaciones";
 			}
 		}, app.loadImage(StartYPYIShell.getPathToIconsYPYI() + "scenePresentacion.png"), true);
+		
+		this.addScene(new ICreateScene() {
+			public Iscene getNewScene() {
+				return new FlickrScene(app, "Flickr");
+			}
+			public String getTitle() {
+				return "Fotos Interactivas";
+			}
+		}, app.loadImage(StartYPYIShell.getPathToIconsYPYI() + "sceneFotos.png"), false);
 		
 		if (this.hasFBO){
 			this.addScene(new ICreateScene() {

@@ -41,7 +41,6 @@ import org.mt4j.util.math.Tools3D;
 import org.mt4j.util.math.Vector3D;
 
 import processing.core.PImage;
-import advanced.flickrMT.FlickrMTFotoLoader;
 import ar.edu.utn.ypyi.frontend.menu.StartYPYIShell;
 import ar.edu.utn.ypyi.frontend.slides.SceneUtils;
 
@@ -112,7 +111,7 @@ public class FlickrScene extends AbstractScene {
 				switch (ae.getID()) {
 				case TapEvent.BUTTON_CLICKED:
 					//Flickr Keyboard
-			        MTKeyboard keyb = new MTKeyboard(app);
+			        final MTKeyboard keyb = new MTKeyboard(app);
 			        keyb.setFillColor(new MTColor(30, 30, 30, 210));
 			        keyb.setStrokeColor(new MTColor(0,0,0,255));
 			        
@@ -161,9 +160,7 @@ public class FlickrScene extends AbstractScene {
 							        String flickrSecret = "";
 							        Properties properties = new Properties();
 								    try {
-								        properties.load(new FileInputStream(System.getProperty("user.dir") +File.separator+"src"+ File.separator +"ar"+ File.separator
-								        									+"edu"+ File.separator+ "utn"+ File.separator + "ypyi"+ File.separator 
-								        									+ "frontend" +File.separator+"flickrMT"+File.separator +"data"+File.separator + "FlickrApiKey.txt"));
+								        properties.load(new FileInputStream(StartYPYIShell.getPathToIconsYPYI()+ "FlickrApiKey.txt"));
 								        
 								        flickrApiKey = properties.getProperty("FlickrApiKey", " ");
 								        flickrSecret = properties.getProperty("FlickrSecret", " ");
@@ -207,6 +204,7 @@ public class FlickrScene extends AbstractScene {
 							        flickrLoader.start();
 							        //Clear textarea
 							        t.clear();
+							        keyb.close();
 									break;
 								default:
 									break;
