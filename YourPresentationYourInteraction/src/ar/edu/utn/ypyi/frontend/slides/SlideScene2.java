@@ -48,6 +48,7 @@ public class SlideScene2 extends AbstractScene {
 				public void actionPerformed(ActionEvent ae) {
 					switch (ae.getID()) {
 					case TapEvent.BUTTON_CLICKED:
+					case TapEvent.BUTTON_UP:
 						mtApp.popScene();
 						break;
 					default:
@@ -81,6 +82,7 @@ public class SlideScene2 extends AbstractScene {
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
 				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:
 					//Save the current scene on the scene stack before changing
 					mtApp.pushScene();
 					mtApp.changeScene(nextSceneInner);

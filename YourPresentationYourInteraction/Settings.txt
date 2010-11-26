@@ -26,3 +26,8 @@ MultiMiceEnabled=true
 MouseEnabled=false
 #Time to click (in millis)
 ClickTime = 100
+#Ommited Clicks
+OmmitedClicks = 5
+#Menu
+MenuWidth=80
+MenuHeight=80

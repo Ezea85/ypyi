@@ -244,7 +244,8 @@ public class SceneUtils {
         eraserButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
-				case TapEvent.BUTTON_CLICKED:{
+				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:{
 //					//As we are messing with opengl here, we make sure it happens in the rendering thread
 					mtApplication.invokeLater(new Runnable() {
 						public void run() {
@@ -281,7 +282,8 @@ public class SceneUtils {
         brushButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
-				case TapEvent.BUTTON_CLICKED:{
+				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:{
 					drawingScene.setBrush(textureBrush);
 					brushButton.setNoStroke(false);
 					penButton.setNoStroke(true);
@@ -295,7 +297,8 @@ public class SceneUtils {
         penButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
-				case TapEvent.BUTTON_CLICKED:{
+				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:{
 					drawingScene.setBrush(pencilBrush);
 					penButton.setNoStroke(false);
 					brushButton.setNoStroke(true);
@@ -337,7 +340,8 @@ public class SceneUtils {
         colPickButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
-				case TapEvent.BUTTON_CLICKED:{
+				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:{
 					if (colorWidget.isVisible()){
 						colorWidget.setVisible(false);
 					}else{
@@ -409,7 +413,8 @@ public class SceneUtils {
         handButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
-				case TapEvent.BUTTON_CLICKED:{
+				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:{
 					handButton.setNoStroke(false);
 					penButton.setVisible(false);
 					brushButton.setVisible(false);
@@ -428,7 +433,8 @@ public class SceneUtils {
         editButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
-				case TapEvent.BUTTON_CLICKED:{
+				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:{
 					editButton.setNoStroke(false);
 					penButton.setVisible(true);
 					brushButton.setVisible(true);
@@ -518,7 +524,8 @@ public class SceneUtils {
 	      eraserButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae) {
 					switch (ae.getID()) {
-					case TapEvent.BUTTON_CLICKED:{
+					case TapEvent.BUTTON_CLICKED:
+					case TapEvent.BUTTON_UP:{
 	//					//As we are messing with opengl here, we make sure it happens in the rendering thread
 						mtApplication.invokeLater(new Runnable() {
 							public void run() {
@@ -550,7 +557,8 @@ public class SceneUtils {
 	      brushButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae) {
 					switch (ae.getID()) {
-					case TapEvent.BUTTON_CLICKED:{
+					case TapEvent.BUTTON_CLICKED:
+					case TapEvent.BUTTON_UP:{
 						drawingScene.setBrush(textureBrush);
 						brushButton.setNoStroke(false);
 						penButton.setNoStroke(true);
@@ -564,7 +572,8 @@ public class SceneUtils {
 	      penButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae) {
 					switch (ae.getID()) {
-					case TapEvent.BUTTON_CLICKED:{
+					case TapEvent.BUTTON_CLICKED:
+					case TapEvent.BUTTON_UP:{
 						drawingScene.setBrush(pencilBrush);
 						penButton.setNoStroke(false);
 						brushButton.setNoStroke(true);
@@ -605,7 +614,8 @@ public class SceneUtils {
 	      colPickButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae) {
 					switch (ae.getID()) {
-					case TapEvent.BUTTON_CLICKED:{
+					case TapEvent.BUTTON_CLICKED:
+					case TapEvent.BUTTON_UP:{
 						if (colorWidget.isVisible()){
 							colorWidget.setVisible(false);
 						}else{
@@ -674,7 +684,8 @@ public class SceneUtils {
 	      handButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae) {
 					switch (ae.getID()) {
-					case TapEvent.BUTTON_CLICKED:{
+					case TapEvent.BUTTON_CLICKED:
+					case TapEvent.BUTTON_UP:{
 						handButton.setNoStroke(false);
 						penButton.setVisible(false);
 						brushButton.setVisible(false);
@@ -693,7 +704,8 @@ public class SceneUtils {
 	      editButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae) {
 					switch (ae.getID()) {
-					case TapEvent.BUTTON_CLICKED:{
+					case TapEvent.BUTTON_CLICKED:
+					case TapEvent.BUTTON_UP:{
 						editButton.setNoStroke(false);
 						penButton.setVisible(true);
 						brushButton.setVisible(true);

@@ -188,9 +188,9 @@ public class YPYISceneMenu extends MTRectangle{
 		
 		//CLOSE BUTTON
 //		Vector3D a = new Vector3D(-width * 1.2f, height/2f);
-		Vector3D a = new Vector3D(-width * 1.55f, 0);
+		Vector3D a = new Vector3D(-64 * 1.55f, 0);
 		a.rotateZ(PApplet.radians(80));
-		Vector3D b = new Vector3D(-width * 1.55f, 0);
+		Vector3D b = new Vector3D(-64 * 1.55f, 0);
 		b.rotateZ(PApplet.radians(10));
 		
 //		final MTRectangle closeButton = new MTRectangle(x + a.x, y + a.y, buttonWidth, buttonHeight, app);
@@ -217,7 +217,8 @@ public class YPYISceneMenu extends MTRectangle{
 		closeButton.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 			public boolean processGestureEvent(MTGestureEvent ge) {
 				TapEvent te = (TapEvent)ge;
-				if (te.isTapped()){
+//				if (te.isTapped()){
+				if (te.getTapID() == TapEvent.BUTTON_CLICKED || te.getTapID() == TapEvent.BUTTON_UP){
 					slideYPYIScene.exitPresentation(nroSlide);	
 				}
 				return false;
@@ -245,7 +246,8 @@ public class YPYISceneMenu extends MTRectangle{
 			restoreButton.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 				public boolean processGestureEvent(MTGestureEvent ge) {
 					TapEvent te = (TapEvent)ge;
-					if (te.isTapped()){
+//					if (te.isTapped()){
+					if (te.getTapID() == TapEvent.BUTTON_CLICKED || te.getTapID() == TapEvent.BUTTON_UP){
 						slideYPYIScene.minimizeYPYI(nroSlide);
 					}
 					return false;
@@ -255,7 +257,8 @@ public class YPYISceneMenu extends MTRectangle{
 			menuShape.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 				public boolean processGestureEvent(MTGestureEvent ge) {
 					TapEvent te = (TapEvent)ge;
-					if (te.isTapped()){
+//					if (te.isTapped()){
+					if (te.getTapID() == TapEvent.BUTTON_CLICKED || te.getTapID() == TapEvent.BUTTON_UP){
 						restoreButton.setVisible(!restoreButton.isVisible());
 						closeButton.setVisible(!closeButton.isVisible());
 					}

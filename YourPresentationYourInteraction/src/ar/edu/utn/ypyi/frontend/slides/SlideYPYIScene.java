@@ -111,8 +111,10 @@ public class SlideYPYIScene extends AbstractScene implements YPYIMaximizableScen
 		
 		abrirButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
-				if(ae.getID() == TapEvent.BUTTON_CLICKED) {
-					cargarYReproducirPresentacion();
+				if(ae.getID() == TapEvent.BUTTON_CLICKED || ae.getID() == TapEvent.BUTTON_UP) {
+					if(slideScenes==null){
+						cargarYReproducirPresentacion();
+					}
 				}
 			}
 		});

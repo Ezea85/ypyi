@@ -92,14 +92,15 @@ public class MainDrawingScene extends AbstractScene {
         b.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
-				case TapEvent.BUTTON_CLICKED:{
+				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:
 //					//As we are messing with opengl here, we make sure it happens in the rendering thread
 					pa.invokeLater(new Runnable() {
 						public void run() {
 							sceneTexture.getFbo().clear(true, 255, 255, 255, 0, true);						
 						}
 					});
-				}break;
+					break;
 				default:
 					break;
 				}
@@ -128,11 +129,12 @@ public class MainDrawingScene extends AbstractScene {
         brushButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
-				case TapEvent.BUTTON_CLICKED:{
+				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:
 					drawingScene.setBrush(textureBrush);
 					brushButton.setNoStroke(false);
 					penButton.setNoStroke(true);
-				}break;
+					break;
 				default:
 					break;
 				}
@@ -142,11 +144,12 @@ public class MainDrawingScene extends AbstractScene {
         penButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
-				case TapEvent.BUTTON_CLICKED:{
+				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:
 					drawingScene.setBrush(pencilBrush);
 					penButton.setNoStroke(false);
 					brushButton.setNoStroke(true);
-				}break;
+					break;
 				default:
 					break;
 				}
@@ -184,14 +187,15 @@ public class MainDrawingScene extends AbstractScene {
         colPickButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
-				case TapEvent.BUTTON_CLICKED:{
+				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:
 					if (colorWidget.isVisible()){
 						colorWidget.setVisible(false);
 					}else{
 						colorWidget.setVisible(true);
 						colorWidget.sendToFront();
 					}				
-				}break;
+					break;
 				default:
 					break;
 				}
