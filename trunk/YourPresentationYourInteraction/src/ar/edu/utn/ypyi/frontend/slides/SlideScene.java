@@ -77,7 +77,7 @@ public class SlideScene extends AbstractScene {
 		public void actionPerformed(ActionEvent ae) {
 			final List<MTImage> mtFotos = new ArrayList<MTImage>();
 			
-			if(ae.getID() == TapEvent.BUTTON_CLICKED) {
+			if(ae.getID() == TapEvent.BUTTON_CLICKED || ae.getID() == TapEvent.BUTTON_UP) {
 				System.out.println("Entro al filechooser.");
 				Collection <String> urlImagenes = SceneUtils.fileChooserImagenes();
 				System.out.println("Salgo del filechooser.");
@@ -148,6 +148,7 @@ public class SlideScene extends AbstractScene {
 				public void actionPerformed(ActionEvent ae) {
 					switch (ae.getID()) {
 					case TapEvent.BUTTON_CLICKED:
+					case TapEvent.BUTTON_UP:
 						mtApp.popScene();
 						break;
 					default:
@@ -157,7 +158,7 @@ public class SlideScene extends AbstractScene {
 			});
 			getCanvas().addChild(previousSceneButton);
 			previousSceneButton.scale(-2f, 2f, 1, previousSceneButton.getCenterPointLocal(), TransformSpace.LOCAL);
-			previousSceneButton.setPositionGlobal(new Vector3D(previousSceneButton.getWidthXY(TransformSpace.GLOBAL) - 20, (mtApp.height/2) - previousSceneButton.getHeightXY(TransformSpace.GLOBAL) - 5, 0));
+			previousSceneButton.setPositionGlobal(new Vector3D(previousSceneButton.getWidthXY(TransformSpace.GLOBAL) - 20, (mtApp.height/2), 0));
 		}	
 		
 		
@@ -174,8 +175,8 @@ public class SlideScene extends AbstractScene {
 	
 	public void addSceneMenu(SlideYPYIScene slideYPYIScene, int nroSlide){
 		if (sceneMenu == null){
-			float menuWidth = 64;
-			float menuHeight = 64;
+			float menuWidth = MT4jSettings.getInstance().getMenuWidth();
+			float menuHeight = MT4jSettings.getInstance().getMenuHeight();
 //			this.sceneMenu = new MTSceneMenu(this, app.width-menuWidth/2f, 0-menuHeight/2f, menuWidth, menuHeight, app);
 //			this.sceneMenu = new MTSceneMenu(this, app.width-menuWidth, 0, menuWidth, menuHeight, app);
 			this.sceneMenu = new YPYISceneMenu(this, 0, 0, menuWidth, menuHeight, this.mtApp,slideYPYIScene, nroSlide);
@@ -209,7 +210,7 @@ public class SlideScene extends AbstractScene {
 		homeButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 			
-				if(ae.getID() == TapEvent.BUTTON_CLICKED) {
+				if(ae.getID() == TapEvent.BUTTON_CLICKED || ae.getID() == TapEvent.BUTTON_UP) {
 					
 //					System.out.println("Listo todas las escenas que tengo en la pila...");
 //					
@@ -254,6 +255,7 @@ public class SlideScene extends AbstractScene {
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
 				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:
 					//Save the current scene on the scene stack before changing
 					mtApp.pushScene();
 					mtApp.changeScene(nextSceneInner);
@@ -265,7 +267,7 @@ public class SlideScene extends AbstractScene {
 		});
 		getCanvas().addChild(nextSceneButton);
 		nextSceneButton.scale(2f, 2f, 1, nextSceneButton.getCenterPointLocal(), TransformSpace.LOCAL);
-		nextSceneButton.setPositionGlobal(new Vector3D(mtApp.width - nextSceneButton.getWidthXY(TransformSpace.GLOBAL) + 20, (mtApp.height/2) - nextSceneButton.getHeightXY(TransformSpace.GLOBAL) - 5, 0));
+		nextSceneButton.setPositionGlobal(new Vector3D(mtApp.width - nextSceneButton.getWidthXY(TransformSpace.GLOBAL) + 20, (mtApp.height/2), 0));
 
 	}
 	

@@ -179,6 +179,7 @@ public class YPYIShellScene extends AbstractScene {
 						//MTBaseComponent clickedComp = (MTBaseComponent)arg0.getSource();
 						switch (arg0.getID()) {
 						case TapEvent.BUTTON_CLICKED:
+						case TapEvent.BUTTON_UP:
 							
 							Iscene scene = new AirHockeyScene(app, "AirHockey");
 							
@@ -312,7 +313,8 @@ public class YPYIShellScene extends AbstractScene {
 		cell.addGestureListener(TapProcessor.class, new IGestureEventListener() {
 			public boolean processGestureEvent(MTGestureEvent ge) {
 				TapEvent te = (TapEvent)ge;
-				if (te.isTapped()){
+//				if (te.isTapped()){
+				if (te.getTapID() == TapEvent.BUTTON_UP  || te.getTapID() == TapEvent.BUTTON_CLICKED){
 					//System.out.println("Clicked cell: " + te.getTargetComponent());
 					final Iscene scene = createScene.getNewScene();
 							

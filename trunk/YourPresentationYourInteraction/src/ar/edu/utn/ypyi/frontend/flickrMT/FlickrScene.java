@@ -110,6 +110,7 @@ public class FlickrScene extends AbstractScene {
 			public void actionPerformed(ActionEvent ae) {
 				switch (ae.getID()) {
 				case TapEvent.BUTTON_CLICKED:
+				case TapEvent.BUTTON_UP:
 					//Flickr Keyboard
 			        final MTKeyboard keyb = new MTKeyboard(app);
 			        keyb.setFillColor(new MTColor(30, 30, 30, 210));
@@ -148,6 +149,7 @@ public class FlickrScene extends AbstractScene {
 								//MTBaseComponent clickedComp = (MTBaseComponent)arg0.getSource();
 								switch (arg0.getID()) {
 								case TapEvent.BUTTON_CLICKED:
+								case TapEvent.BUTTON_UP:
 									//Get current search parameters
 							        SearchParameters sp = new SearchParameters();
 							        sp.setText(t.getText());
@@ -215,7 +217,7 @@ public class FlickrScene extends AbstractScene {
 					keyb.addChild(flickrButton);
 //			        getCanvas().addChild(0, keyb);
 					getCanvas().addChild(keyb);
-					keyb.scale(1.5f, 1.5f, 1, keyb.getCenterPointLocal(), TransformSpace.LOCAL);
+					keyb.scale(1.8f, 1.8f, 1, keyb.getCenterPointLocal(), TransformSpace.LOCAL);
 					keyb.setPositionGlobal(new Vector3D(app.width/2f, app.height/2f,0));
 					break;
 				default:
@@ -243,7 +245,7 @@ public class FlickrScene extends AbstractScene {
 			public void actionPerformed(ActionEvent ae) {
 				final List<MTImage> mtFotos = new ArrayList<MTImage>();
 				
-				if(ae.getID() == TapEvent.BUTTON_CLICKED) {
+				if(ae.getID() == TapEvent.BUTTON_CLICKED || ae.getID() == TapEvent.BUTTON_UP) {
 					System.out.println("Entro al filechooser.");
 					Collection <String> urlImagenes = SceneUtils.fileChooserImagenes();
 					System.out.println("Salgo del filechooser.");
